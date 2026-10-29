@@ -1,577 +1,474 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Агро-Призы РСХБ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { g: '#008744', g2: '#006837', y: '#FFB612', y2: '#F2A900', bg: 'var(--bg)', card: 'var(--card)', ink: 'var(--tx)', mut: 'var(--mut)', line: 'var(--bd)' },
-          fontFamily: { sans: ['Montserrat', 'system-ui', 'sans-serif'] }, borderRadius: { card: '16px' }
-        }
-      }
-    };
-  </script>
-  <style>
-    :root {
-      --bg: #F4F6F8;
-      --card: #fff;
-      --tx: #1F2421;
-      --mut: #5f6b64;
-      --bd: #e3e8e5;
-      box-sizing: border-box;
-      padding-top: env(safe-area-inset-top, 0px);
-      padding-bottom: env(safe-area-inset-bottom, 0px)
-    }
-
-    @media (prefers-color-scheme:dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #111714;
-        --card: #1b231f;
-        --tx: #eef3f0;
-        --mut: #a3b3a9;
-        --bd: #2b3731
-      }
-    }
-
-    :root[data-theme="dark"] {
-      --bg: #111714;
-      --card: #1b231f;
-      --tx: #eef3f0;
-      --mut: #a3b3a9;
-      --bd: #2b3731
-    }
-
-    html {
-      scroll-padding-top: env(safe-area-inset-top, 0px)
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--tx);
-      font-family: Montserrat, system-ui, sans-serif
-    }
-
-    #root {
-      max-width: 480px;
-      margin: 0 auto;
-      min-height: 100vh
-    }
-
-    @keyframes pop {
-      from {
-        transform: scale(.88);
-        opacity: 0
-      }
-    }
-
-    @keyframes fall {
-      from {
-        transform: translateY(-20px) rotate(0);
-        opacity: 1
-      }
-
-      to {
-        transform: translateY(520px) rotate(540deg);
-        opacity: 0
-      }
-    }
-
-    @keyframes shake {
-      25% {
-        transform: translateX(-5px)
-      }
-
-      75% {
-        transform: translateX(5px)
-      }
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg)
-      }
-    }
-
-    .pop {
-      animation: pop .3s ease-out
-    }
-
-    .shake {
-      animation: shake .3s
-    }
-
-    .nudge {
-      animation: nudge 1s ease-in-out infinite
-    }
-
-    @keyframes nudge {
-      50% {
-        transform: translateY(-7px)
-      }
-    }
-
-    [data-tour] {
-      scroll-margin-top: 16px
-    }
-
-    .wheel {
-      transition: transform 4.4s cubic-bezier(.12, .7, .1, 1)
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-      * {
-        animation: none !important;
-        transition: none !important
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Агро-Призы РСХБ</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { g: '#008744', g2: '#006837', y: '#FFB612', y2: '#F2A900', bg: 'var(--bg)', card: 'var(--card)', ink: 'var(--tx)', mut: 'var(--mut)', line: 'var(--bd)' },
+  fontFamily: { sans: ['Montserrat', 'system-ui', 'sans-serif'] }, borderRadius: { card: '16px' } } } };
+</script>
+<style>
+:root{--bg:#F4F6F8;--card:#fff;--tx:#1F2421;--mut:#5f6b64;--bd:#e3e8e5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111714;--card:#1b231f;--tx:#eef3f0;--mut:#a3b3a9;--bd:#2b3731}}
+:root[data-theme="dark"]{--bg:#111714;--card:#1b231f;--tx:#eef3f0;--mut:#a3b3a9;--bd:#2b3731}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Montserrat,system-ui,sans-serif}
+#root{max-width:480px;margin:0 auto;min-height:100vh}
+@keyframes pop{from{transform:scale(.88);opacity:0}}
+@keyframes fall{from{transform:translateY(-20px) rotate(0);opacity:1}to{transform:translateY(520px) rotate(540deg);opacity:0}}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pop{animation:pop .3s ease-out}.shake{animation:shake .3s}.nudge{animation:nudge 1s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(-7px)}}
+[data-tour]{scroll-margin-top:16px}
+.wheel{transition:transform 4.4s cubic-bezier(.12,.7,.1,1)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
 </head>
-
 <body>
-  <div id="root"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
-  <script type="text/babel">
-    const { useState, useEffect, useRef, useCallback, useMemo } = React;
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
 
-    /* ================= Данные ================= */
-    const PROFILE = {
-      label: 'Садоводство и Дача', emoji: '', title: 'Дачник / Садовод',
-      cards: ['РСХБ •• 4821', 'РСХБ •• 1190'], cats: ['Семена', 'Садоводство', 'Обучение']
-    };
-    const OFFERS = [
-      { partner: 'Своё Родное', icon: '🌱', text: 'Повышенный кэшбэк 15% на семена и рассаду', code: 'RSHB-SEED-15', url: 'https://svoyerodnoe.ru', w: 40 },
-      { partner: 'Своё Родное', icon: '🧺', text: 'Скидка 500 ₽ на садовый инвентарь', code: 'RSHB-AGRO-2026', url: 'https://svoyerodnoe.ru', w: 30 },
-      { partner: 'Я в Агро', icon: '🎓', text: 'Мини-курс «Теплица за выходные» бесплатно', code: 'RSHB-LEARN', url: 'https://example.com', w: 20 },
-      { partner: 'Своё Родное', icon: '🏆', text: 'Кэшбэк 25% на весь каталог маркетплейса', code: 'RSHB-GOLD-25', url: 'https://svoyerodnoe.ru', w: 10 },
-    ];
-    const pickOffer = () => { let r = Math.random() * 100; for (let i = 0; i < OFFERS.length; i++) { r -= OFFERS[i].w; if (r <= 0) return i; } return 0; };
-    const FIELD = ['#008744', '#FFB612', '#9BC53D', '#E8553D', '#5B8DEF', '#F2A900', '#006837'];
+/* ================= Данные ================= */
+const PROFILE = { label: 'Садоводство и Дача', emoji: '', title: 'Дачник / Садовод',
+  cards: ['РСХБ •• 4821', 'РСХБ •• 1190'], cats: ['Семена', 'Садоводство', 'Обучение'] };
+const OFFERS = [
+  { partner: 'Своё Родное', icon: '🌱', text: 'Повышенный кэшбэк 15% на семена и рассаду', code: 'RSHB-SEED-15', url: 'https://svoyerodnoe.ru', w: 40 },
+  { partner: 'Своё Родное', icon: '🧺', text: 'Скидка 500 ₽ на садовый инвентарь', code: 'RSHB-AGRO-2026', url: 'https://svoyerodnoe.ru', w: 30 },
+  { partner: 'Я в Агро', icon: '🎓', text: 'Мини-курс «Теплица за выходные» бесплатно', code: 'RSHB-LEARN', url: 'https://example.com', w: 20 },
+  { partner: 'Своё Родное', icon: '🏆', text: 'Кэшбэк 25% на весь каталог маркетплейса', code: 'RSHB-GOLD-25', url: 'https://svoyerodnoe.ru', w: 10 },
+];
+const pickOffer = () => { let r = Math.random() * 100; for (let i = 0; i < OFFERS.length; i++) { r -= OFFERS[i].w; if (r <= 0) return i; } return 0; };
+const FIELD = ['#008744', '#FFB612', '#9BC53D', '#E8553D', '#5B8DEF', '#F2A900', '#006837'];
 
-    /* ================= Иконки (стиль Lucide) ================= */
-    const PATHS = {
-      back: 'm12 19-7-7 7-7M19 12H5', check: 'M20 6 9 17l-5-5',
-      ticket: 'M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2ZM13 5v2M13 11v2M13 17v2',
-      card: 'M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1ZM2 10h20',
-      leaf: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10ZM2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12',
-    };
-    const Icon = ({ n, s = 20, className = '' }) => (
-      <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true"><path d={PATHS[n]} /></svg>
-    );
+/* ================= Иконки (стиль Lucide) ================= */
+const PATHS = {
+  back: 'm12 19-7-7 7-7M19 12H5', check: 'M20 6 9 17l-5-5',
+  ticket: 'M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2ZM13 5v2M13 11v2M13 17v2',
+  card: 'M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1ZM2 10h20',
+  leaf: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10ZM2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12',
+};
+const Icon = ({ n, s = 20, className = '' }) => (
+  <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true"><path d={PATHS[n]} /></svg>
+);
 
-    /* ================= Паттерн «разнотравье» ================= */
-    const Field = ({ h = 26, className = '' }) => (
-      <svg viewBox={`0 0 480 ${h}`} preserveAspectRatio="none" width="100%" height={h} className={className} aria-hidden="true">
-        {Array.from({ length: 40 }, (_, i) => {
-          const bh = 7 + Math.abs(Math.sin(i * 1.7) + Math.cos(i * 0.55)) * (h - 9) / 2;
-          return <rect key={i} x={i * 12 + 3} y={h - bh} width="6" height={bh + 4} rx="3" fill={FIELD[(i * 3 + (i >> 2)) % FIELD.length]} />;
-        })}
-      </svg>
-    );
+/* ================= Паттерн «разнотравье» ================= */
+const Field = ({ h = 26, className = '' }) => (
+  <svg viewBox={`0 0 480 ${h}`} preserveAspectRatio="none" width="100%" height={h} className={className} aria-hidden="true">
+    {Array.from({ length: 40 }, (_, i) => {
+      const bh = 7 + Math.abs(Math.sin(i * 1.7) + Math.cos(i * 0.55)) * (h - 9) / 2;
+      return <rect key={i} x={i * 12 + 3} y={h - bh} width="6" height={bh + 4} rx="3" fill={FIELD[(i * 3 + (i >> 2)) % FIELD.length]} />;
+    })}
+  </svg>
+);
 
-    /* ================= Header ================= */
-    const Header = ({ tickets, onInfo }) => (
-      <header className="relative overflow-hidden rounded-b-card bg-gradient-to-br from-g2 to-g text-white shadow-md">
-        <div className="flex items-center justify-between px-4 pt-4">
-          <div>
-            <div className="text-[11px] font-bold tracking-wide opacity-80">РОССЕЛЬХОЗБАНК</div>
-            <div className="text-xl font-extrabold leading-tight">Я в Агро</div>
-          </div>
-          <div data-tour="tickets" role="button" tabIndex={0} onClick={onInfo} onKeyDown={e => e.key === 'Enter' && onInfo()} className="flex cursor-pointer items-center gap-2 rounded-full bg-y px-3.5 py-2 text-sm font-extrabold text-[#1F2421] shadow-md transition active:scale-95 focus-visible:outline focus-visible:outline-4 focus-visible:outline-white" aria-label={`Билетов: ${tickets}. Как это работает`}>
-            <Icon n="ticket" s={18} /> <span id="ticketsCount">{tickets}</span><span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#1F2421] text-[12px] font-extrabold italic text-y">i</span>
-          </div>
+/* ================= Header ================= */
+const Header = ({ tickets, onInfo }) => (
+  <header className="relative overflow-hidden rounded-b-card bg-gradient-to-br from-g2 to-g text-white shadow-md">
+    <div className="flex items-center justify-between px-4 pt-4">
+      <div>
+        <div className="text-[11px] font-bold tracking-wide opacity-80">РОССЕЛЬХОЗБАНК</div>
+        <div className="text-xl font-extrabold leading-tight">Я в Агро</div>
+      </div>
+      <div data-tour="tickets" role="button" tabIndex={0} onClick={onInfo} onKeyDown={e => e.key === 'Enter' && onInfo()} className="flex cursor-pointer items-center gap-2 rounded-full bg-y px-3.5 py-2 text-sm font-extrabold text-[#1F2421] shadow-md transition active:scale-95 focus-visible:outline focus-visible:outline-4 focus-visible:outline-white" aria-label={`Билетов: ${tickets}. Как это работает`}>
+        <Icon n="ticket" s={18} /> <span id="ticketsCount">{tickets}</span><span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#1F2421] text-[12px] font-extrabold italic text-y">i</span>
+      </div>
+    </div>
+    <div data-tour="progress" className="mx-4 mb-8 mt-3 rounded-2xl bg-white/15 p-3">
+      <div className="flex justify-between text-[11px] font-bold"><span>До следующего билета</span><span>{fmtN(SPENT)} / {fmtN(STEP)} ₽</span></div>
+      <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-white/25"><div className="h-full rounded-full bg-y" style={{ width: SPENT / STEP * 100 + '%' }} /></div>
+      <div className="mt-1.5 text-[11px] font-medium opacity-90">+1 билет за каждые 5 000 ₽ покупок по картам РСХБ и +1 за вход в игру каждый день</div>
+    </div>
+    <Field className="absolute bottom-0 left-0" />
+  </header>
+);
+
+const BTN = 'w-full rounded-card py-3.5 text-base font-extrabold transition active:scale-[.98] focus-visible:outline focus-visible:outline-4 focus-visible:outline-y2 disabled:opacity-50 ';
+const Card = ({ className = '', children, ...p }) => <div className={'rounded-card bg-card shadow-md ' + className} {...p}>{children}</div>;
+
+/* ================= GameHub ================= */
+const GAMES = [
+  { id: 'wheel', e: '🎡', t: 'Колесо Фортуны', d: 'Один оборот — один приз' },
+  { id: 'scratch', e: '🎫', t: 'Скретч-карта', d: 'Сотрите защитный слой' },
+  { id: 'match', e: '🧩', t: 'Агро 3-в-ряд', d: 'Соберите овощи в ряд' },
+  { id: 'farm', e: '👨‍🌾', t: 'Весёлая Ферма', d: 'Урожай за 10 секунд' },
+];
+function ProfileCard() {
+  const [scan, setScan] = useState(true);
+  useEffect(() => { const t = setTimeout(() => setScan(false), 1600); return () => clearTimeout(t); }, []);
+  return (
+    <Card data-tour="profile" className="mt-4 overflow-hidden">
+      <div className="border-l-[6px] border-g p-4">
+        <div className="flex items-center gap-2 text-xs font-bold text-g"><Icon n="card" s={16} /> Анализ транзакций · карты РСХБ</div>
+        <p className="mt-2 text-[15px] font-bold leading-snug">
+          {scan ? 'Анализируем транзакции по картам РСХБ…'
+            : <>Профиль транзакций по картам РСХБ: категория «{PROFILE.label}»</>}
+        </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {PROFILE.cards.map((c, i) => (
+            <span key={c} className="flex items-center gap-1.5 rounded-full bg-bg px-3 py-1.5 text-xs font-semibold text-mut">
+              {scan ? <span className="h-3 w-3 rounded-full border-2 border-g border-t-transparent" style={{ animation: `spin .8s linear infinite ${i * 0.1}s` }} /> : <Icon n="check" s={14} className="text-g" />}{c}
+            </span>))}
         </div>
-        <div data-tour="progress" className="mx-4 mb-8 mt-3 rounded-2xl bg-white/15 p-3">
-          <div className="flex justify-between text-[11px] font-bold"><span>До следующего билета</span><span>{fmtN(SPENT)} / {fmtN(STEP)} ₽</span></div>
-          <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-white/25"><div className="h-full rounded-full bg-y" style={{ width: SPENT / STEP * 100 + '%' }} /></div>
-          <div className="mt-1.5 text-[11px] font-medium opacity-90">+1 билет за каждые 5 000 ₽ покупок по картам РСХБ и +1 за вход в игру каждый день</div>
-        </div>
-        <Field className="absolute bottom-0 left-0" />
-      </header>
-    );
-
-    const BTN = 'w-full rounded-card py-3.5 text-base font-extrabold transition active:scale-[.98] focus-visible:outline focus-visible:outline-4 focus-visible:outline-y2 disabled:opacity-50 ';
-    const Card = ({ className = '', children, ...p }) => <div className={'rounded-card bg-card shadow-md ' + className} {...p}>{children}</div>;
-
-    /* ================= GameHub ================= */
-    const GAMES = [
-      { id: 'wheel', e: '🎡', t: 'Колесо Фортуны', d: 'Один оборот — один приз' },
-      { id: 'scratch', e: '🎫', t: 'Скретч-карта', d: 'Сотрите защитный слой' },
-      { id: 'match', e: '🧩', t: 'Агро 3-в-ряд', d: 'Соберите овощи в ряд' },
-      { id: 'farm', e: '👨‍🌾', t: 'Весёлая Ферма', d: 'Урожай за 10 секунд' },
-    ];
-    function ProfileCard() {
-      const [scan, setScan] = useState(true);
-      useEffect(() => { const t = setTimeout(() => setScan(false), 1600); return () => clearTimeout(t); }, []);
-      return (
-        <Card data-tour="profile" className="mt-4 overflow-hidden">
-          <div className="border-l-[6px] border-g p-4">
-            <div className="flex items-center gap-2 text-xs font-bold text-g"><Icon n="card" s={16} /> Анализ транзакций · карты РСХБ</div>
-            <p className="mt-2 text-[15px] font-bold leading-snug">
-              {scan ? 'Анализируем транзакции по картам РСХБ…'
-                : <>Профиль транзакций по картам РСХБ: категория «{PROFILE.label}»</>}
-            </p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {PROFILE.cards.map((c, i) => (
-                <span key={c} className="flex items-center gap-1.5 rounded-full bg-bg px-3 py-1.5 text-xs font-semibold text-mut">
-                  {scan ? <span className="h-3 w-3 rounded-full border-2 border-g border-t-transparent" style={{ animation: `spin .8s linear infinite ${i * 0.1}s` }} /> : <Icon n="check" s={14} className="text-g" />}{c}
-                </span>))}
+        {!scan && <p className="pop mt-3 text-xs font-semibold text-mut">Вы — <b className="text-ink">{PROFILE.title}</b>. Подарки подобраны под ваши покупки: {PROFILE.cats.join(', ').toLowerCase()}.</p>}
+      </div>
+    </Card>
+  );
+}
+function GameHub({ tickets, onPlay, history, onHistory }) {
+  return (
+    <main className="px-4 pb-8 pt-5">
+      <h1 className="text-[26px] font-extrabold leading-tight">Агро-Призы</h1>
+      <p className="mt-1 text-sm font-medium text-mut">Сыграйте за минуту — приз гарантирован.</p>
+      <ProfileCard />
+      <div data-tour="games" className="mt-4 grid grid-cols-2 gap-3">
+        {GAMES.map((g, i) => (
+          <button key={g.id} onClick={() => onPlay(g.id)} disabled={!tickets}
+            className="rounded-card bg-card p-4 text-left shadow-md transition hover:-translate-y-0.5 active:scale-[.97] disabled:opacity-60 focus-visible:outline focus-visible:outline-4 focus-visible:outline-y2">
+            <div className={'flex h-14 w-14 items-center justify-center rounded-2xl text-3xl ' + (i % 3 === 0 ? 'bg-g/10' : 'bg-y/25')}>{g.e}</div>
+            <div className="mt-3 text-[15px] font-extrabold leading-tight">{g.t}</div>
+            <div className="mt-1 text-xs font-medium text-mut">{g.d}</div>
+            <div className={'mt-3 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold ' + (tickets ? 'bg-g text-white' : 'bg-line text-mut')}>
+              <Icon n="ticket" s={12} /> {tickets ? `Попыток: ${tickets}` : 'Нет билетов'}
             </div>
-            {!scan && <p className="pop mt-3 text-xs font-semibold text-mut">Вы — <b className="text-ink">{PROFILE.title}</b>. Подарки подобраны под ваши покупки: {PROFILE.cats.join(', ').toLowerCase()}.</p>}
-          </div>
-        </Card>
-      );
+          </button>))}
+      </div>
+      <button data-tour="history" onClick={onHistory} className="mt-4 flex w-full items-center justify-between rounded-card bg-card px-4 py-3.5 text-sm font-extrabold shadow-md transition active:scale-[.98] focus-visible:outline focus-visible:outline-4 focus-visible:outline-y2">
+        <span className="flex items-center gap-2"><Icon n="ticket" s={18} className="text-g" /> История выигрышей</span>
+        <span className="rounded-full bg-y px-2.5 py-0.5 text-xs text-[#1F2421]">{history.length}</span>
+      </button>
+    </main>
+  );
+}
+
+const GameShell = ({ title, hint, onBack, children }) => (
+  <main className="px-4 pb-8 pt-5">
+    <div className="mb-4 flex items-center gap-3">
+      <button onClick={onBack} aria-label="Назад" className="flex h-10 w-10 items-center justify-center rounded-full bg-card shadow-md transition active:scale-90"><Icon n="back" /></button>
+      <h2 className="text-xl font-extrabold">{title}</h2>
+    </div>
+    <Card className="p-5 text-center">{hint && <p className="mb-3 text-sm font-medium text-mut">{hint}</p>}{children}</Card>
+  </main>
+);
+
+/* ================= WheelGame ================= */
+function WheelGame({ onBack, onWin }) {
+  const cv = useRef(null), [rot, setRot] = useState(0), [busy, setBusy] = useState(false);
+  const N = 8, seg = 360 / N;
+  useEffect(() => {
+    const c = cv.current, x = c.getContext('2d'), S = 640, r = S / 2; c.width = c.height = S;
+    x.beginPath(); x.arc(r, r, r - 2, 0, 7); x.fillStyle = '#F2A900'; x.fill();
+    for (let i = 0; i < N; i++) {
+      const a0 = (i * seg - 90 - seg / 2) * Math.PI / 180, a1 = a0 + seg * Math.PI / 180;
+      x.beginPath(); x.moveTo(r, r); x.arc(r, r, r - 28, a0, a1); x.closePath();
+      x.fillStyle = i % 2 ? '#FFB612' : (i % 4 ? '#006837' : '#008744'); x.fill(); x.strokeStyle = '#fff'; x.lineWidth = 4; x.stroke();
+      x.save(); x.translate(r, r); x.rotate((a0 + a1) / 2); x.font = '58px serif'; x.textAlign = 'center'; x.fillText(OFFERS[i % 4].icon, r * 0.66, 20); x.restore();
+      const d = (a0 + a1) / 2; x.beginPath(); x.arc(r + Math.cos(d + seg * Math.PI / 360) * (r - 14), r + Math.sin(d + seg * Math.PI / 360) * (r - 14), 6, 0, 7); x.fillStyle = '#fff'; x.fill();
     }
-    function GameHub({ tickets, onPlay, history, onHistory }) {
-      return (
-        <main className="px-4 pb-8 pt-5">
-          <h1 className="text-[26px] font-extrabold leading-tight">Агро-Призы</h1>
-             className="mt-1 text-sm font-medium text-mut">Сыграйте за минуту — приз гарантирован.</p>
-            rofileCard />
-            iv data-tour="games" className="mt-4 grid grid-cols-2 gap-3">
-              AMES.map((g, i) => (
-                utton key={g.id} onClick={() => onPlay(g.id)} disabled={!tickets}
-                  assName="rounded-card bg-card p-4 text-left shadow-md transition hover:-translate-y-0.5 active:scale-[.97] disabled:opacity-60 focus-visible:outline focus-visible:outline-4 focus-visible:outline-y2">
-                  iv className={'flex h-14 w-14 items-center justify-center rounded-2xl text-3xl ' + (i % 3 === 0 ? 'bg-g/10' : 'bg-y/25')}>{g.e}</div>
-                  iv className="mt-3 text-[15px] font-extrabold leading-tight">{g.t}</div>
-                  iv className="mt-1 text-xs font-medium text-mut">{g.d}</div>
-                  iv className={'mt-3 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold ' + (tickets ? 'bg-g text-white' : 'bg-line text-mut')}>
-                    con n="ticket" s={12} /> {tickets ? `Попыток: ${tickets}` : 'Нет билетов'}
-                  div>
-                button>))}
-            div>
-            utton data-tour="history" onClick={onHistory} className="mt-4 flex w-full items-center justify-between rounded-card bg-card px-4 py-3.5 text-sm font-extrabold shadow-md transition active:scale-[.98] focus-visible:outline focus-visible:outline-4 focus-visible:outline-y2">
-              pan className="flex items-center gap-2"><Icon n="ticket" s={18} className="text-g" /> История выигрышей</span>
-              pan className="rounded-full bg-y px-2.5 py-0.5 text-xs text-[#1F2421]">{history.length}</span>
-            button>
-          main>
-        
+    x.beginPath(); x.arc(r, r, 52, 0, 7); x.fillStyle = '#fff'; x.fill(); x.lineWidth = 8; x.strokeStyle = '#006837'; x.stroke();
+    x.font = '800 30px Montserrat,sans-serif'; x.fillStyle = '#006837'; x.textAlign = 'center'; x.fillText('РСХБ', r, r + 11);
+  }, []);
+  const spin = () => {
+    if (busy) return; setBusy(true);
+    const win = pickOffer(), k = win + 4 * Math.round(Math.random());
+    setRot(Math.ceil(rot / 360) * 360 + 360 * 5 + (360 - k * seg));
+    setTimeout(() => onWin(win), 5000);
+  };
+  return (
+    <GameShell title="Колесо Фортуны" hint="Колесо остановится на призе, подобранном под ваш профиль." onBack={onBack}>
+      <div className="relative mx-auto w-[min(310px,78vw)]">
+        <div className="absolute -top-3 left-1/2 z-10 h-0 w-0 -translate-x-1/2 border-x-[13px] border-t-[26px] border-x-transparent border-t-g2 drop-shadow" />
+        <canvas ref={cv} className="wheel block w-full rounded-full shadow-md" style={{ transform: `rotate(${rot}deg)` }} />
+      </div>
+      <button className={BTN + 'mt-5 bg-y text-[#1F2421] hover:bg-y2'} disabled={busy} onClick={spin}>{busy ? 'Колесо крутится…' : 'Крутить колесо'}</button>
+    </GameShell>
+  );
 }
-    
-co    nst GameShell = ({ title, hint, onBack, children }) => (
-        ain className="px-4 pb-8 pt-5">
-          iv className="mb-4 flex items-center gap-3">
-            utton onClick={onBack} aria-label="Назад" className="flex h-10 w-10 items-center justify-center rounded-full bg-card shadow-md transition active:scale-90"><Icon n="back" /></button>
-            2 className="text-xl font-extrabold">{title}</h2>
-          div>
-          ard className="p-5 text-center">{hint && <p className="mb-3 text-sm font-medium text-mut">{hint}</p>}{children}</Card>
-        main>
-);    
 
-/*     ================= WheelGame ================= */
-fu    nction WheelGame({ onBack, onWin }) {
-        nst cv = useRef(null), [rot, setRot] = useState(0), [busy, setBusy] = useState(false);
-        nst N = 8, seg = 360 / N;
-        eEffect(() => {
-          nst c = cv.current, x = c.getContext('2d'), S = 640, r = S / 2; c.width = c.height = S;
-          beginPath(); x.arc(r, r, r - 2, 0, 7); x.fillStyle = '#F2A900'; x.fill();
-          r (let i = 0; i < N; i++) {
-            nst a0 = (i * seg - 90 - seg / 2) * Math.PI / 180, a1 = a0 + seg * Math.PI / 180;
-            beginPath(); x.moveTo(r, r); x.arc(r, r, r - 28, a0, a1); x.closePath();
-            fillStyle = i % 2 ? '#FFB612' : (i % 4 ? '#006837' : '#008744'); x.fill(); x.strokeStyle = '#fff'; x.lineWidth = 4; x.stroke();
-            save(); x.translate(r, r); x.rotate((a0 + a1) / 2); x.font = '58px serif'; x.textAlign = 'center'; x.fillText(OFFERS[i % 4].icon, r * 0.66, 20); x.restore();
-            nst d = (a0 + a1) / 2; x.beginPath(); x.arc(r + Math.cos(d + seg * Math.PI / 360) * (r - 14), r + Math.sin(d + seg * Math.PI / 360) * (r - 14), 6, 0, 7); x.fillStyle = '#fff'; x.fill();
-                    beginPath(); x.arc(r, r, 52, 0, 7); x.fillStyle = '#fff'; x.fill(); x.lineWidth = 8; x.strokeStyle = '#006837'; x.stroke();
-          font = '800 30px Montserrat,sans-serif'; x.fillStyle = '#006837'; x.textAlign = 'center'; x.fillText('РСХБ', r, r + 11);
-         []);
-        nst spin = () => {
-           (busy) return; setBusy(true);
-          nst win = pickOffer(), k = win + 4 * Math.round(Math.random());
-          tRot(Math.ceil(rot / 360) * 360 + 360 * 5 + (360 - k * seg));
-          tTimeout(() => onWin(win), 5000);
-        
-        turn (
-          ameShell title="Колесо Фортуны" hint="Колесо остановится на призе, подобранном под ваш профиль." onBack={onBack}>
-            iv className="relative mx-auto w-[min(310px,78vw)]">
-              iv className="absolute -top-3 left-1/2 z-10 h-0 w-0 -translate-x-1/2 border-x-[13px] border-t-[26px] border-x-transparent border-t-g2 drop-shadow" />
-              anvas ref={cv} className="wheel block w-full rounded-full shadow-md" style={{ transform: `rotate(${rot}deg)` }} />
-            div>
-            utton className={BTN + 'mt-5 bg-y text-[#1F2421] hover:bg-y2'} disabled={busy} onClick={spin}>{busy ? 'Колесо крутится…' : 'Крутить колесо'}</button>
-          GameShell>
-        
+/* ================= ScratchCard ================= */
+function ScratchCard({ onBack, onWin }) {
+  const cv = useRef(null), down = useRef(false), done = useRef(false), [pct, setPct] = useState(0), [win] = useState(pickOffer);
+  const W = 280, H = 160, k = Math.min(100, Math.round(pct / 0.55));
+  useEffect(() => {
+    const x = cv.current.getContext('2d'), g = x.createLinearGradient(0, 0, W, H);
+    g.addColorStop(0, '#9aa8a0'); g.addColorStop(.5, '#d3dbd6'); g.addColorStop(1, '#9aa8a0');
+    x.fillStyle = g; x.fillRect(0, 0, W, H);
+    x.fillStyle = '#5f6b64'; x.font = '700 16px Montserrat,sans-serif'; x.textAlign = 'center'; x.fillText('Сотрите защитный слой', W / 2, H / 2 + 5);
+  }, []);
+  const scratch = e => {
+    if (!down.current || done.current) return;
+    const c = cv.current, b = c.getBoundingClientRect(), x = c.getContext('2d');
+    x.globalCompositeOperation = 'destination-out'; x.beginPath();
+    x.arc((e.clientX - b.left) * W / b.width, (e.clientY - b.top) * H / b.height, 22, 0, 7); x.fill();
+    const d = x.getImageData(0, 0, W, H).data; let t = 0, n = 0;
+    for (let i = 3; i < d.length; i += 160) { n++; if (d[i] === 0) t++; }
+    const p = Math.round(t / n * 100); setPct(p);
+    if (p > 55) { done.current = true; x.clearRect(0, 0, W, H); setTimeout(() => onWin(win), 1300); }
+  };
+  return (
+    <GameShell title="Скретч-карта" hint="Проведите пальцем по карте — под слоем ваш приз." onBack={onBack}>
+      <div className="relative mx-auto h-[160px] w-[280px] max-w-full touch-none overflow-hidden rounded-card shadow-md">
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-y to-y2 text-[#1F2421]">
+          <span className="text-5xl">{OFFERS[win].icon}</span><span className="mt-1 text-sm font-extrabold">{OFFERS[win].partner}</span>
+        </div>
+        <canvas ref={cv} width={W} height={H} className="absolute inset-0 h-full w-full cursor-crosshair"
+          onPointerDown={e => { down.current = true; e.target.setPointerCapture(e.pointerId); scratch(e); }} onPointerMove={scratch} onPointerUp={() => down.current = false} />
+      </div>
+      <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-line"><div className="h-full rounded-full bg-g transition-all" style={{ width: k + '%' }} /></div>
+      <p className="mt-2 text-xs font-bold text-mut">Стёрто: {k}%</p>
+    </GameShell>
+  );
 }
-    
-/*     ================= ScratchCard ================= */
-fu    nction ScratchCard({ onBack, onWin }) {
-        nst cv = useRef(null), down = useRef(false), done = useRef(false), [pct, setPct] = useState(0), [win] = useState(pickOffer);
-        nst W = 280, H = 160, k = Math.min(100, Math.round(pct / 0.55));
-        eEffect(() => {
-          nst x = cv.current.getContext('2d'), g = x.createLinearGradient(0, 0, W, H);
-          addColorStop(0, '#9aa8a0'); g.addColorStop(.5, '#d3dbd6'); g.addColorStop(1, '#9aa8a0');
-          fillStyle = g; x.fillRect(0, 0, W, H);
-          fillStyle = '#5f6b64'; x.font = '700 16px Montserrat,sans-serif'; x.textAlign = 'center'; x.fillText('Сотрите защитный слой', W / 2, H / 2 + 5);
-         []);
-        nst scratch = e => {
-           (!down.current || done.current) return;
-          nst c = cv.current, b = c.getBoundingClientRect(), x = c.getContext('2d');
-          globalCompositeOperation = 'destination-out'; x.beginPath();
-          arc((e.clientX - b.left) * W / b.width, (e.clientY - b.top) * H / b.height, 22, 0, 7); x.fill();
-          nst d = x.getImageData(0, 0, W, H).data; let t = 0, n = 0;
-          r (let i = 3; i < d.length; i += 160) { n++; if (d[i] === 0) t++; }
-          nst p = Math.round(t / n * 100); setPct(p);
-           (p > 55) { done.current = true; x.clearRect(0, 0, W, H); setTimeout(() => onWin(win), 1300); }
-        
-        turn (
-          ameShell title="Скретч-карта" hint="Проведите пальцем по карте — под слоем ваш приз." onBack={onBack}>
-            iv className="relative mx-auto h-[160px] w-[280px] max-w-full touch-none overflow-hidden rounded-card shadow-md">
-              iv className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-y to-y2 text-[#1F2421]">
-                pan className="text-5xl">{OFFERS[win].icon}</span><span className="mt-1 text-sm font-extrabold">{OFFERS[win].partner}</span>
-              div>
-              anvas ref={cv} width={W} height={H} className="absolute inset-0 h-full w-full cursor-crosshair"
-                PointerDown={e => { down.current = true; e.target.setPointerCapture(e.pointerId); scratch(e); }} onPointerMove={scratch} onPointerUp={() => down.current = false} />
-            div>
-            iv className="mt-4 h-2.5 overflow-hidden rounded-full bg-line"><div className="h-full rounded-full bg-g transition-all" style={{ width: k + '%' }} /></div>
-             className="mt-2 text-xs font-bold text-mut">Стёрто: {k}%</p>
-          GameShell>
-        
-}
-    
-/*     ================= Агро 3-в-ряд (быстрый раунд) ================= */
-co    nst BOARD = ['🌽',' 🥕',' 🌽',' 🥕', '🥕',' 🌽',' 🥕',' 🌽', '🍅',' 🍅',' 🥕',' 🍅', '🥕',' 🌽',' 🍅',' 🌽'];
-fu    nction findMatches(b) {
-        nst m = new Set();
-        r (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
-          nst i = r * 4 + c;
-           (c < 3 && b[i] === b[i + 1] && b[i] === b[i + 2]) [i, i + 1, i + 2].forEach(v => m.add(v));
-           (r < 3 && b[i] === b[i + 4] && b[i] === b[i + 8]) [i, i + 4, i + 8].forEach(v => m.add(v));
-                turn m;
-}
-    fu    nction MatchGame({ onBack, onWin }) {
-        nst [b, setB] = useState(BOARD), [sel, setSel] = useState(null), [hit, setHit] = useState(new Set()), [bad, setBad] = useState(null);
-        nst tap = i => {
-           (hit.size) return;
-           (sel === null) return setSel(i);
-          nst adj = Math.abs(sel - i) === 4 || (Math.abs(sel - i) === 1 && (sel >> 2) === (i >> 2));
-           (!adj) return setSel(i);
-          nst n = [...b]; [[sel], n[i]] = [n[i], n[sel]];
-          nst m = findMatches(n); setSel(null);
-           (m.size) { setB(n); setHit(m); setTimeout(() => onWin(pickOffer()), 1200); }
-          se { setBad(i); setTimeout(() => setBad(null), 350); }
-        
-        turn (
-          ameShell title="Агро 3-в-ряд" hint={hit.size ? 'Ряд собран!' : 'Поменяйте две соседние плитки, чтобы собрать три одинаковых в ряд.'} onBack={onBack}>
-            iv className="mx-auto grid max-w-[300px] grid-cols-4 gap-2">
-              .map((v, i) => (
-                utton key={i} onClick={() => tap(i)} aria-label={`Плитка ${v}`}
-                  assName={'aspect-square rounded-2xl border-2 text-3xl transition active:scale-90 ' + (hit.has(i) ? 'scale-110 border-y2 bg-y' : sel === i ? 'border-g bg-g/10' : 'border-line bg-bg') + (bad === i ? ' shake' : '')}>{v}</button>))}
-            div>
-          GameShell>
-        
-}
-    
-/*     ================= Весёлая Ферма ================= */
-fu    nction FarmGame({ onBack, onWin }) {
-        nst [t, setT] = useState(10), [p, setP] = useState(0), [on, setOn] = useState(false), fin = useRef(false);
-        eEffect(() => { if (!on) return; const id = setInterval(() => setT(v => v - 1), 1000); return () => clearInterval(id); }, [on]);
-        eEffect(() => { if (on && (t <= 0 || p >= 100) && !fin.current) { fin.current = true; setTimeout(() => onWin(pickOffer()), 900); } }, [t, p, on]);
-        nst stage = p >= 100 ? '🍅' : p > 60 ? '🌿' : p > 25 ? '🌱' : '🟤';
-        turn (
-          ameShell title="Весёлая Ферма" hint={on ? `Осталось ${Math.max(t, 0)} с` : 'Поливайте грядку — урожай созреет за 10 секунд.'} onBack={onBack}>
-            utton aria-label="Полить грядку" onClick={() => { if (!on) setOn(true); if (!fin.current) setP(v => Math.min(100, v + 8)); }}
-              assName="select-none text-[88px] leading-none transition active:scale-90">{stage}</button>
-            iv className="mt-4 h-2.5 overflow-hidden rounded-full bg-line"><div className="h-full rounded-full bg-g transition-all" style={{ width: p + '%' }} /></div>
-             className="mt-2 text-xs font-bold text-mut">Созревание: {p}%</p>
-          GameShell>
-        
-}
-    
-/*     ================= RewardScreen ================= */
-fu    nction RewardScreen({ offerIdx, onHome }) {
-        nst o = OFFERS[offerIdx], [copied, setCopied] = useState(false);
-        nst bits = useMemo(() => Array.from({ length: 26 }, (_, i) => ({ l: Math.random() * 100, d: Math.random() * .6, c: FIELD[i % FIELD.length], s: 6 + Math.random() * 6 })), []);
-        nst copy = async () => {
-          y { await navigator.clipboard.writeText(o.code); }
-          tch (e) { const a = document.createElement('textarea'); a.value = o.code; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch (_) {}  a.remove(); }
-          tCopied(true); setTimeout(() => setCopied(false), 2000);
-        
-        turn (
-          ain className="relative overflow-hidden px-4 pb-8 pt-5">
-            iv className="pointer-events-none absolute inset-x-0 top-0 h-[520px]" aria-hidden="true">
-              its.map((b, i) => <i key={i} className="absolute top-0 block rounded-sm" style={{ left: b.l + '%', width: b.s, height: b.s * 1.6, background: b.c, animation: `fall 2.4s ${b.d}s ease-in forwards` }} />)}
-            div>
-            ard className="pop relative overflow-hidden text-center">
-              ield h={20} className="rotate-180" />
-              iv className="px-5 pb-5 pt-2">
-                iv className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-y/25 text-5xl">{o.icon}</div>
-                iv className="mt-3 flex justify-center"><PartnerLogo name={o.partner} /></div>
-                2 className="mt-3 text-2xl font-extrabold">Ваш приз</h2>
-                 className="mt-1 text-[15px] font-semibold leading-snug">{o.text}</p>
-                 className="mt-2 text-xs font-medium text-mut">Подобрано по профилю: {PROFILE.title}</p>
-                 className="mt-1 text-xs font-bold text-g2">Промокод действует до {fmtD(expOf(Date.now(), offerIdx))}</p>
-                iv className="relative my-5 border-t-2 border-dashed border-line">
-                  pan className="absolute -left-8 -top-3 h-6 w-6 rounded-full bg-bg" /><span className="absolute -right-8 -top-3 h-6 w-6 rounded-full bg-bg" />
-                div>
-                iv className="rounded-card border-2 border-dashed border-g bg-g/5 py-3.5 font-mono text-xl font-extrabold tracking-wider text-g2" data-code>{o.code}</div>
-                utton className={BTN + 'mt-4 bg-g text-white hover:bg-g2'} onClick={copy}>{copied ? 'Скопировано!' : 'Скопировать код'}</button>
-                utton className={BTN + 'mt-2.5 bg-y text-[#1F2421] hover:bg-y2'} onClick={() => window.open(o.url, '_blank')}>Перейти к партнёру</button>
-                utton className={BTN + 'mt-2.5 border-2 border-g text-g'} onClick={onHome}>Вернуться в хаб</button>
-              div>
-            Card>
-          main>
-        
-}
-    
-/*     ================= Партнёры: бренд-слот ================= */
-//     logo: data-URI (или https-URL из белого списка CSP); пока null — показываем инициал на фирменном цвете партнёра
-co    nst PARTNERS = { 'Своё Родное': { logo: null, color: '#008744' }, 'Я в Агро': { logo: null, color: '#006837' } };
-co    nst PartnerLogo = ({ name }) => {
-        nst p = PARTNERS[name] || {};
-        turn (
-          pan className="inline-flex items-center gap-2 rounded-full bg-bg py-1 pl-1 pr-3 text-xs font-extrabold">
-            .logo ? <img src={p.logo} alt="" className="h-6 w-6 rounded-full object-contain" />
-              <span className="flex h-6 w-6 items-center justify-center rounded-full text-[11px] text-white" style={{ background: p.color || '#008744' }}>{name[0]}</span>}{name}
-          span>
-        
-};    
-co    nst copyText = async t => {
-        y { await navigator.clipboard.writeText(t); }
-        tch (e) { const a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch (_) {}  a.remove(); }
-};    
 
-/*     ================= Даты, прогрессия, инструкция ================= */
-co    nst SPENT = 3200, STEP = 5000, DAYS = [30, 14, 60, 7]; // DAYS — срок действия промокода (дней) по индексу оффера
-co    nst fmtN = n => n.toLocaleString('ru-RU');
-co    nst fmtD = d => new Date(d).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
-co    nst fmtDT = ts => new Date(ts).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-co    nst expOf = (ts, i) => new Date(ts + DAYS[i] * 864e5);
-co    nst TOUR = [
-        t: 'tickets', title: 'Ваши билеты', text: 'Билет — одна попытка в любой игре. Новый билет добавляется каждый день, когда вы заходите в «Агро-Призы».' },
-        t: 'progress', title: 'Билеты за покупки', text: 'Каждые 5 000 ₽, потраченные картами РСХБ, дают +1 билет. Шкала показывает, сколько осталось до следующего.' },
-        t: 'profile', title: 'Карты РСХБ', text: 'Здесь мы анализируем покупки по вашим картам РСХБ и подбираем подарки под ваш профиль.' },
-        t: 'games', title: 'Игры', text: 'Колесо, скретч-карта, 3-в-ряд и ферма. Одна игра — один билет, приз гарантирован.' },
-        t: 'history', title: 'История выигрышей', text: 'Все ваши промокоды: копируйте код, переходите к партнёру и следите за сроком действия.' },
-        t: 'tickets', title: 'Это всё!', text: 'Чтобы увидеть инструкцию ещё раз, нажмите на значок билета в шапке — он всегда на месте.' },
-];    
-fu    nction Tour({ onClose }) {
-        nst [i, setI] = useState(0), [r, setR] = useState(null), s = TOUR[i], last = i === TOUR.length - 1;
-        nst measure = useCallback(() => {
-          nst el = document.querySelector(`[data-tour="${s.t}"]`);
-           (!el) return setR(null);
-          nst b = el.getBoundingClientRect(); setR({ x: b.left, y: b.top, w: b.width, h: b.height });
-         [s.t]);
-        eEffect(() => { document.body.style.paddingBottom = '70vh'; return () => { document.body.style.paddingBottom = ''; }; }, []);
-        eEffect(() => {
-          nst el = document.querySelector(`[data-tour="${s.t}"]`);
-           (el) el.scrollIntoView({ block: 'start', behavior: 'instant' });
-          asure();
-          ndow.addEventListener('resize', measure); window.addEventListener('scroll', measure);
-          turn () => { window.removeEventListener('resize', measure); window.removeEventListener('scroll', measure); };
-         [measure]);
-        nst done = () => { window.scrollTo(0, 0); onClose(); };
-        nst top = r ? Math.min(r.y + r.h + 64, window.innerHeight - 230) : window.innerHeight * 0.3;
-        nst ax = r ? Math.min(Math.max(r.x + r.w / 2, 28), window.innerWidth - 28) : 0;
-        turn (
-          iv className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Инструкция">
-             ? <div className="pointer-events-none absolute rounded-2xl ring-[3px] ring-y" style={{ left: r.x - 6, top: r.y - 6, width: r.w + 12, height: r.h + 12, boxShadow: '0 0 0 9999px rgba(0,0,0,.74)' }} />
-              <div className="absolute inset-0 bg-black/70" />}
-             && <div className="pointer-events-none absolute" style={{ left: ax - 14, top: r.y + r.h + 10 }}>
-              vg className="nudge" width="28" height="48" viewBox="0 0 28 48" fill="none" stroke="#FFB612" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="M14 44V6M4 16 14 5l10 11" /></svg></div>}
-            ard key={i} className="pop absolute left-4 right-4 mx-auto max-w-[448px] p-4" style={{ top }}>
-              iv className="text-xs font-bold text-g">{i + 1} / {TOUR.length}</div>
-              3 className="mt-1 text-lg font-extrabold">{s.title}</h3>
-               className="mt-1 text-sm font-medium leading-snug text-mut">{s.text}</p>
-              iv className="mt-3 flex gap-2">
-                last && <button className={BTN + 'border-2 border-line py-2.5 text-sm'} onClick={done}>Пропустить</button>}
-                utton className={BTN + 'bg-g py-2.5 text-sm text-white hover:bg-g2'} onClick={() => last ? done() : setI(i + 1)}>{last ? 'Понятно' : 'Далее'}</button>
-              div>
-            Card>
-          div>
-        
+/* ================= Агро 3-в-ряд (быстрый раунд) ================= */
+const BOARD = ['🌽','🥕','🌽','🥕', '🥕','🌽','🥕','🌽', '🍅','🍅','🥕','🍅', '🥕','🌽','🍅','🌽'];
+function findMatches(b) {
+  const m = new Set();
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
+    const i = r * 4 + c;
+    if (c < 3 && b[i] === b[i + 1] && b[i] === b[i + 2]) [i, i + 1, i + 2].forEach(v => m.add(v));
+    if (r < 3 && b[i] === b[i + 4] && b[i] === b[i + 8]) [i, i + 4, i + 8].forEach(v => m.add(v));
+  }
+  return m;
 }
-    
-/*     ================= StartScreen ================= */
-fu    nction StartScreen({ onStart }) {
-        nst steps = ['Выберите игру', 'Сыграйте до 60 секунд', 'Заберите промокод партнёра'];
-        turn (
-          ain className="px-4 pb-8 pt-8 text-center">
-            iv className="pop mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-card shadow-md"><Icon n="leaf" s={52} className="text-g" /></div>
-            1 className="mt-6 text-3xl font-extrabold leading-tight">Агро-Призы</h1>
-              lassName="mx-auto mt-2 max-w-[300px] text-[15px] font-medium text-mut">Мини-игра на минуту и гарантированный подарок от партнёров «Я в Агро».</p>
-              className="mx-auto mt-6 grid max-w-[320px] gap-2 text-left text-sm font-semibold">
-                ps.map((s, i) => <li key={s} className="flex items-center gap-3 rounded-card bg-card p-3 shadow-md"><span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-g text-xs font-extrabold text-white">{i + 1}</span>{s}</li>)}
-              >
-              ton className={BTN + 'mt-8 bg-g text-white hover:bg-g2'} onClick={onStart}>Начать</button>
-            in>
-  );      
+function MatchGame({ onBack, onWin }) {
+  const [b, setB] = useState(BOARD), [sel, setSel] = useState(null), [hit, setHit] = useState(new Set()), [bad, setBad] = useState(null);
+  const tap = i => {
+    if (hit.size) return;
+    if (sel === null) return setSel(i);
+    const adj = Math.abs(sel - i) === 4 || (Math.abs(sel - i) === 1 && (sel >> 2) === (i >> 2));
+    if (!adj) return setSel(i);
+    const n = [...b]; [n[sel], n[i]] = [n[i], n[sel]];
+    const m = findMatches(n); setSel(null);
+    if (m.size) { setB(n); setHit(m); setTimeout(() => onWin(pickOffer()), 1200); }
+    else { setBad(i); setTimeout(() => setBad(null), 350); }
+  };
+  return (
+    <GameShell title="Агро 3-в-ряд" hint={hit.size ? 'Ряд собран!' : 'Поменяйте две соседние плитки, чтобы собрать три одинаковых в ряд.'} onBack={onBack}>
+      <div className="mx-auto grid max-w-[300px] grid-cols-4 gap-2">
+        {b.map((v, i) => (
+          <button key={i} onClick={() => tap(i)} aria-label={`Плитка ${v}`}
+            className={'aspect-square rounded-2xl border-2 text-3xl transition active:scale-90 ' + (hit.has(i) ? 'scale-110 border-y2 bg-y' : sel === i ? 'border-g bg-g/10' : 'border-line bg-bg') + (bad === i ? ' shake' : '')}>{v}</button>))}
+      </div>
+    </GameShell>
+  );
+}
 
-/    * =    ================ HistoryModal ================= */
-func    tion HistoryModal({ history, onClose }) {
-  co      t [copied, setCopied] = useState(null);
-  co      t items = [...history].sort((a, b) => b.ts - a.ts).map(h => ({ o: OFFERS[h.i], k: h.ts, ts: h.ts, i: h.i }));
-  co      t copy = async (code, k) => { await copyText(code); setCopied(k); setTimeout(() => setCopied(null), 2000); };
-  re      rn (
-             className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 sm:items-center" onClick={onClose}>
-               className="pop flex max-h-[85vh] w-full max-w-[480px] flex-col rounded-t-[24px] bg-bg shadow-md sm:rounded-card" role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
-                 className="flex items-center justify-between px-5 pb-2 pt-5">
-                  className="text-xl font-extrabold">История выигрышей</h2>
-                  ton onClick={onClose} aria-label="Закрыть" className="flex h-9 w-9 items-center justify-center rounded-full bg-card text-lg shadow-md">✕</button>
-                v>
-                 className="overflow-y-auto px-4 pb-5">
-                  ems.length && <p className="py-10 text-center text-sm font-medium text-mut">Пока пусто. Сыграйте в любую игру — приз появится здесь.</p>}
-                  ms.map(({ o, k, ts, i }) => (
-                    d key={k} className="mt-3 p-4">
-                       className="flex items-center gap-3">
-                        n className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-y/25 text-2xl">{o.icon}</span>
-                         className="min-w-0"><PartnerLogo name={o.partner} /><p className="mt-1 text-[13px] font-semibold leading-snug">{o.text}</p>
-                          lassName="mt-1 text-[11px] font-semibold text-mut">Получен {fmtDT(ts)} · {expOf(ts, i) < Date.now() ? <b className="text-red-600">срок истёк</b> : <>действует до <b className="text-ink">{fmtD(expOf(ts, i))}</b></>}</p></div>
-                      v>
-                       className="mt-3 rounded-xl border-2 border-dashed border-g bg-g/5 py-2 text-center font-mono text-base font-extrabold tracking-wider text-g2">{o.code}</div>
-                       className="mt-2 grid grid-cols-2 gap-2">
-                        ton className={BTN + 'bg-g py-2.5 text-sm text-white hover:bg-g2'} onClick={() => copy(o.code, k)}>{copied === k ? 'Скопировано!' : 'Скопировать'}</button>
-                        ton className={BTN + 'bg-y py-2.5 text-sm text-[#1F2421] hover:bg-y2'} onClick={() => window.open(o.url, '_blank')}>К партнёру</button>
-                      v>
-                    rd>))}
-                v>
-              v>
-            v>
-  );      
+/* ================= Весёлая Ферма ================= */
+function FarmGame({ onBack, onWin }) {
+  const [t, setT] = useState(10), [p, setP] = useState(0), [on, setOn] = useState(false), fin = useRef(false);
+  useEffect(() => { if (!on) return; const id = setInterval(() => setT(v => v - 1), 1000); return () => clearInterval(id); }, [on]);
+  useEffect(() => { if (on && (t <= 0 || p >= 100) && !fin.current) { fin.current = true; setTimeout(() => onWin(pickOffer()), 900); } }, [t, p, on]);
+  const stage = p >= 100 ? '🍅' : p > 60 ? '🌿' : p > 25 ? '🌱' : '🟤';
+  return (
+    <GameShell title="Весёлая Ферма" hint={on ? `Осталось ${Math.max(t, 0)} с` : 'Поливайте грядку — урожай созреет за 10 секунд.'} onBack={onBack}>
+      <button aria-label="Полить грядку" onClick={() => { if (!on) setOn(true); if (!fin.current) setP(v => Math.min(100, v + 8)); }}
+        className="select-none text-[88px] leading-none transition active:scale-90">{stage}</button>
+      <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-line"><div className="h-full rounded-full bg-g transition-all" style={{ width: p + '%' }} /></div>
+      <p className="mt-2 text-xs font-bold text-mut">Созревание: {p}%</p>
+    </GameShell>
+  );
+}
 
-/    * =    ================ App ================= */
-func    tion App() {
-  co      t [screen, setScreen] = useState('start'), [tickets, setTickets] = useState(2), [popup, setPopup] = useState(false), [histOpen, setHistOpen] = useState(false), [tour, setTour] = useState(false);
-  co      t [reward, setReward] = useState(null), [history, setHistory] = useState([]);
-  co      t roll = () => { if (Math.random() < 1 / 3) setPopup(true); };
-  co      t isFirst = () => { try { return !localStorage.getItem('agro_tour_seen'); } catch (e) { return true; } };
-  co      t start = () => { setScreen('hub'); if (isFirst()) setTour(true); else roll(); };
-  co      t closeTour = () => { setTour(false); if (isFirst()) { try { localStorage.setItem('agro_tour_seen', '1'); } catch (e) {} ro ll(); } };
-  co      t play = id => { if (tickets < 1) return; setTickets(t => t - 1); setScreen(id); };
-  co      t win = i => { setReward(i); setHistory(h => [...h, { i, ts: Date.now() }]); setScreen('reward'); };
-  co      t p = { onBack: () => { setTickets(t => t + 1); setScreen('hub'); }, onWin: win };
-  re      rn (
-            >
-              der tickets={tickets} onInfo={() => setTour(true)} />
-              een === 'start' && <StartScreen onStart={start} />}
-              een === 'hub' && <GameHub tickets={tickets} onPlay={play} history={history} onHistory={() => setHistOpen(true)} />}
-              een === 'wheel' && <WheelGame {...p} />}
-              een === 'scratch' && <ScratchCard {...p} />}
-              een === 'match' && <MatchGame {...p} />}
-              een === 'farm' && <FarmGame {...p} />}
-              een === 'reward' && <RewardScreen offerIdx={reward} onHome={() => { setReward(null); setScreen('hub'); }} />}
-              tOpen && <HistoryModal history={history} onClose={() => setHistOpen(false)} />}
-              r && <Tour onClose={closeTour} />}
-              up && (
-                 className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-5" onClick={() => setPopup(false)}>
-                  d className="pop w-full max-w-[340px] overflow-hidden text-center" role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
-                    ld h={20} className="rotate-180" />
-                     className="px-5 pb-5 pt-2">
-                       className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-y text-2xl font-extrabold text-[#1F2421] shadow-inner">+1</div>
-                      lassName="mt-3 text-[15px] font-bold leading-snug">Вам начислен +1 билет в Колесо удачи за регулярные покупки в категории «Сад и огород»!</p>
-                      ton className={BTN + 'mt-4 bg-g text-white hover:bg-g2'} onClick={() => { setTickets(t => t + 1); setPopup(false); }}>Забрать билет</button>
-                    v>
-                  rd>
-                v>)}
-            v>
-  );      
-Re    ac    tDOM.createRoot(document.getElementById('root')).render(<App />);
-  </script>
+/* ================= RewardScreen ================= */
+function RewardScreen({ offerIdx, onHome }) {
+  const o = OFFERS[offerIdx], [copied, setCopied] = useState(false);
+  const bits = useMemo(() => Array.from({ length: 26 }, (_, i) => ({ l: Math.random() * 100, d: Math.random() * .6, c: FIELD[i % FIELD.length], s: 6 + Math.random() * 6 })), []);
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(o.code); }
+    catch (e) { const a = document.createElement('textarea'); a.value = o.code; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch (_) {} a.remove(); }
+    setCopied(true); setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <main className="relative overflow-hidden px-4 pb-8 pt-5">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[520px]" aria-hidden="true">
+        {bits.map((b, i) => <i key={i} className="absolute top-0 block rounded-sm" style={{ left: b.l + '%', width: b.s, height: b.s * 1.6, background: b.c, animation: `fall 2.4s ${b.d}s ease-in forwards` }} />)}
+      </div>
+      <Card className="pop relative overflow-hidden text-center">
+        <Field h={20} className="rotate-180" />
+        <div className="px-5 pb-5 pt-2">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-y/25 text-5xl">{o.icon}</div>
+          <div className="mt-3 flex justify-center"><PartnerLogo name={o.partner} /></div>
+          <h2 className="mt-3 text-2xl font-extrabold">Ваш приз</h2>
+          <p className="mt-1 text-[15px] font-semibold leading-snug">{o.text}</p>
+          <p className="mt-2 text-xs font-medium text-mut">Подобрано по профилю: {PROFILE.title}</p>
+          <p className="mt-1 text-xs font-bold text-g2">Промокод действует до {fmtD(expOf(Date.now(), offerIdx))}</p>
+          <div className="relative my-5 border-t-2 border-dashed border-line">
+            <span className="absolute -left-8 -top-3 h-6 w-6 rounded-full bg-bg" /><span className="absolute -right-8 -top-3 h-6 w-6 rounded-full bg-bg" />
+          </div>
+          <div className="rounded-card border-2 border-dashed border-g bg-g/5 py-3.5 font-mono text-xl font-extrabold tracking-wider text-g2" data-code>{o.code}</div>
+          <button className={BTN + 'mt-4 bg-g text-white hover:bg-g2'} onClick={copy}>{copied ? 'Скопировано!' : 'Скопировать код'}</button>
+          <button className={BTN + 'mt-2.5 bg-y text-[#1F2421] hover:bg-y2'} onClick={() => window.open(o.url, '_blank')}>Перейти к партнёру</button>
+          <button className={BTN + 'mt-2.5 border-2 border-g text-g'} onClick={onHome}>Вернуться в хаб</button>
+        </div>
+      </Card>
+    </main>
+  );
+}
+
+/* ================= Партнёры: бренд-слот ================= */
+// logo: data-URI (или https-URL из белого списка CSP); пока null — показываем инициал на фирменном цвете партнёра
+const PARTNERS = { 'Своё Родное': { logo: null, color: '#008744' }, 'Я в Агро': { logo: null, color: '#006837' } };
+const PartnerLogo = ({ name }) => {
+  const p = PARTNERS[name] || {};
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full bg-bg py-1 pl-1 pr-3 text-xs font-extrabold">
+      {p.logo ? <img src={p.logo} alt="" className="h-6 w-6 rounded-full object-contain" />
+        : <span className="flex h-6 w-6 items-center justify-center rounded-full text-[11px] text-white" style={{ background: p.color || '#008744' }}>{name[0]}</span>}{name}
+    </span>
+  );
+};
+const copyText = async t => {
+  try { await navigator.clipboard.writeText(t); }
+  catch (e) { const a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch (_) {} a.remove(); }
+};
+
+/* ================= Даты, прогрессия, инструкция ================= */
+const SPENT = 3200, STEP = 5000, DAYS = [30, 14, 60, 7]; // DAYS — срок действия промокода (дней) по индексу оффера
+const fmtN = n => n.toLocaleString('ru-RU');
+const fmtD = d => new Date(d).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
+const fmtDT = ts => new Date(ts).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+const expOf = (ts, i) => new Date(ts + DAYS[i] * 864e5);
+const TOUR = [
+  { t: 'tickets', title: 'Ваши билеты', text: 'Билет — одна попытка в любой игре. Новый билет добавляется каждый день, когда вы заходите в «Агро-Призы».' },
+  { t: 'progress', title: 'Билеты за покупки', text: 'Каждые 5 000 ₽, потраченные картами РСХБ, дают +1 билет. Шкала показывает, сколько осталось до следующего.' },
+  { t: 'profile', title: 'Карты РСХБ', text: 'Здесь мы анализируем покупки по вашим картам РСХБ и подбираем подарки под ваш профиль.' },
+  { t: 'games', title: 'Игры', text: 'Колесо, скретч-карта, 3-в-ряд и ферма. Одна игра — один билет, приз гарантирован.' },
+  { t: 'history', title: 'История выигрышей', text: 'Все ваши промокоды: копируйте код, переходите к партнёру и следите за сроком действия.' },
+  { t: 'tickets', title: 'Это всё!', text: 'Чтобы увидеть инструкцию ещё раз, нажмите на значок билета в шапке — он всегда на месте.' },
+];
+function Tour({ onClose }) {
+  const [i, setI] = useState(0), [r, setR] = useState(null), s = TOUR[i], last = i === TOUR.length - 1;
+  const measure = useCallback(() => {
+    const el = document.querySelector(`[data-tour="${s.t}"]`);
+    if (!el) return setR(null);
+    const b = el.getBoundingClientRect(); setR({ x: b.left, y: b.top, w: b.width, h: b.height });
+  }, [s.t]);
+  useEffect(() => { document.body.style.paddingBottom = '70vh'; return () => { document.body.style.paddingBottom = ''; }; }, []);
+  useEffect(() => {
+    const el = document.querySelector(`[data-tour="${s.t}"]`);
+    if (el) el.scrollIntoView({ block: 'start', behavior: 'instant' });
+    measure();
+    window.addEventListener('resize', measure); window.addEventListener('scroll', measure);
+    return () => { window.removeEventListener('resize', measure); window.removeEventListener('scroll', measure); };
+  }, [measure]);
+  const done = () => { window.scrollTo(0, 0); onClose(); };
+  const top = r ? Math.min(r.y + r.h + 64, window.innerHeight - 230) : window.innerHeight * 0.3;
+  const ax = r ? Math.min(Math.max(r.x + r.w / 2, 28), window.innerWidth - 28) : 0;
+  return (
+    <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Инструкция">
+      {r ? <div className="pointer-events-none absolute rounded-2xl ring-[3px] ring-y" style={{ left: r.x - 6, top: r.y - 6, width: r.w + 12, height: r.h + 12, boxShadow: '0 0 0 9999px rgba(0,0,0,.74)' }} />
+        : <div className="absolute inset-0 bg-black/70" />}
+      {r && <div className="pointer-events-none absolute" style={{ left: ax - 14, top: r.y + r.h + 10 }}>
+        <svg className="nudge" width="28" height="48" viewBox="0 0 28 48" fill="none" stroke="#FFB612" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="M14 44V6M4 16 14 5l10 11" /></svg></div>}
+      <Card key={i} className="pop absolute left-4 right-4 mx-auto max-w-[448px] p-4" style={{ top }}>
+        <div className="text-xs font-bold text-g">{i + 1} / {TOUR.length}</div>
+        <h3 className="mt-1 text-lg font-extrabold">{s.title}</h3>
+        <p className="mt-1 text-sm font-medium leading-snug text-mut">{s.text}</p>
+        <div className="mt-3 flex gap-2">
+          {!last && <button className={BTN + 'border-2 border-line py-2.5 text-sm'} onClick={done}>Пропустить</button>}
+          <button className={BTN + 'bg-g py-2.5 text-sm text-white hover:bg-g2'} onClick={() => last ? done() : setI(i + 1)}>{last ? 'Понятно' : 'Далее'}</button>
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+/* ================= StartScreen ================= */
+function StartScreen({ onStart }) {
+  const steps = ['Выберите игру', 'Сыграйте до 60 секунд', 'Заберите промокод партнёра'];
+  return (
+    <main className="px-4 pb-8 pt-8 text-center">
+      <div className="pop mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-card shadow-md"><Icon n="leaf" s={52} className="text-g" /></div>
+      <h1 className="mt-6 text-3xl font-extrabold leading-tight">Агро-Призы</h1>
+      <p className="mx-auto mt-2 max-w-[300px] text-[15px] font-medium text-mut">Мини-игра на минуту и гарантированный подарок от партнёров «Я в Агро».</p>
+      <ol className="mx-auto mt-6 grid max-w-[320px] gap-2 text-left text-sm font-semibold">
+        {steps.map((s, i) => <li key={s} className="flex items-center gap-3 rounded-card bg-card p-3 shadow-md"><span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-g text-xs font-extrabold text-white">{i + 1}</span>{s}</li>)}
+      </ol>
+      <button className={BTN + 'mt-8 bg-g text-white hover:bg-g2'} onClick={onStart}>Начать</button>
+    </main>
+  );
+}
+
+/* ================= HistoryModal ================= */
+function HistoryModal({ history, onClose }) {
+  const [copied, setCopied] = useState(null);
+  const items = [...history].sort((a, b) => b.ts - a.ts).map(h => ({ o: OFFERS[h.i], k: h.ts, ts: h.ts, i: h.i }));
+  const copy = async (code, k) => { await copyText(code); setCopied(k); setTimeout(() => setCopied(null), 2000); };
+  return (
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 sm:items-center" onClick={onClose}>
+      <div className="pop flex max-h-[85vh] w-full max-w-[480px] flex-col rounded-t-[24px] bg-bg shadow-md sm:rounded-card" role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center justify-between px-5 pb-2 pt-5">
+          <h2 className="text-xl font-extrabold">История выигрышей</h2>
+          <button onClick={onClose} aria-label="Закрыть" className="flex h-9 w-9 items-center justify-center rounded-full bg-card text-lg shadow-md">✕</button>
+        </div>
+        <div className="overflow-y-auto px-4 pb-5">
+          {!items.length && <p className="py-10 text-center text-sm font-medium text-mut">Пока пусто. Сыграйте в любую игру — приз появится здесь.</p>}
+          {items.map(({ o, k, ts, i }) => (
+            <Card key={k} className="mt-3 p-4">
+              <div className="flex items-center gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-y/25 text-2xl">{o.icon}</span>
+                <div className="min-w-0"><PartnerLogo name={o.partner} /><p className="mt-1 text-[13px] font-semibold leading-snug">{o.text}</p>
+                  <p className="mt-1 text-[11px] font-semibold text-mut">Получен {fmtDT(ts)} · {expOf(ts, i) < Date.now() ? <b className="text-red-600">срок истёк</b> : <>действует до <b className="text-ink">{fmtD(expOf(ts, i))}</b></>}</p></div>
+              </div>
+              <div className="mt-3 rounded-xl border-2 border-dashed border-g bg-g/5 py-2 text-center font-mono text-base font-extrabold tracking-wider text-g2">{o.code}</div>
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                <button className={BTN + 'bg-g py-2.5 text-sm text-white hover:bg-g2'} onClick={() => copy(o.code, k)}>{copied === k ? 'Скопировано!' : 'Скопировать'}</button>
+                <button className={BTN + 'bg-y py-2.5 text-sm text-[#1F2421] hover:bg-y2'} onClick={() => window.open(o.url, '_blank')}>К партнёру</button>
+              </div>
+            </Card>))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ================= App ================= */
+function App() {
+  const [screen, setScreen] = useState('start'), [tickets, setTickets] = useState(2), [popup, setPopup] = useState(false), [histOpen, setHistOpen] = useState(false), [tour, setTour] = useState(false);
+  const [reward, setReward] = useState(null), [history, setHistory] = useState([]);
+  const roll = () => { if (Math.random() < 1 / 3) setPopup(true); };
+  const isFirst = () => { try { return !localStorage.getItem('agro_tour_seen'); } catch (e) { return true; } };
+  const start = () => { setScreen('hub'); if (isFirst()) setTour(true); else roll(); };
+  const closeTour = () => { setTour(false); if (isFirst()) { try { localStorage.setItem('agro_tour_seen', '1'); } catch (e) {} roll(); } };
+  const play = id => { if (tickets < 1) return; setTickets(t => t - 1); setScreen(id); };
+  const win = i => { setReward(i); setHistory(h => [...h, { i, ts: Date.now() }]); setScreen('reward'); };
+  const p = { onBack: () => { setTickets(t => t + 1); setScreen('hub'); }, onWin: win };
+  return (
+    <div>
+      <Header tickets={tickets} onInfo={() => setTour(true)} />
+      {screen === 'start' && <StartScreen onStart={start} />}
+      {screen === 'hub' && <GameHub tickets={tickets} onPlay={play} history={history} onHistory={() => setHistOpen(true)} />}
+      {screen === 'wheel' && <WheelGame {...p} />}
+      {screen === 'scratch' && <ScratchCard {...p} />}
+      {screen === 'match' && <MatchGame {...p} />}
+      {screen === 'farm' && <FarmGame {...p} />}
+      {screen === 'reward' && <RewardScreen offerIdx={reward} onHome={() => { setReward(null); setScreen('hub'); }} />}
+      {histOpen && <HistoryModal history={history} onClose={() => setHistOpen(false)} />}
+      {tour && <Tour onClose={closeTour} />}
+      {popup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-5" onClick={() => setPopup(false)}>
+          <Card className="pop w-full max-w-[340px] overflow-hidden text-center" role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
+            <Field h={20} className="rotate-180" />
+            <div className="px-5 pb-5 pt-2">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-y text-2xl font-extrabold text-[#1F2421] shadow-inner">+1</div>
+              <p className="mt-3 text-[15px] font-bold leading-snug">Вам начислен +1 билет в Колесо удачи за регулярные покупки в категории «Сад и огород»!</p>
+              <button className={BTN + 'mt-4 bg-g text-white hover:bg-g2'} onClick={() => { setTickets(t => t + 1); setPopup(false); }}>Забрать билет</button>
+            </div>
+          </Card>
+        </div>)}
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
 </body>
-
 </html>
