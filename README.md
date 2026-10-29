@@ -183,8 +183,8 @@ flowchart TB
 ### Вариант 2. Локальный сервер
 
 ```bash
-git clone <URL вашего репозитория>
-cd <папка репозитория>
+git clone https://github.com/Wolf-prog/agro-lottery.git
+cd agro-lottery
 python3 -m http.server 8080
 # откройте http://localhost:8080
 ```
@@ -193,7 +193,7 @@ python3 -m http.server 8080
 
 1. Загрузите `index.html` в корень репозитория.
 2. **Settings → Pages → Build and deployment → Deploy from a branch**, ветка `main`, папка `/ (root)`.
-3. Через минуту страница откроется по адресу `https://<ваш-логин>.github.io/<репозиторий>/`.
+3. Через минуту страница откроется по адресу `https://wolf-prog.github.io/agro-lottery/`.
 
 ### Как посмотреть разные сценарии
 
@@ -212,7 +212,7 @@ python3 -m http.server 8080
 
 ```html
 <iframe
-  src="https://<адрес-размещения>/index.html"
+  src="https://wolf-prog.github.io/agro-lottery/index.html"
   title="Агро-Лотерея РСХБ"
   width="100%" height="760"
   style="border:0"
